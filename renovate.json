@@ -10,9 +10,7 @@
     {
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
-      "matchPackagePatterns": [
-        "*"
-      ],
+      "enabledManagers": ["node"],
       "matchUpdateTypes": [
         "minor",
         "patch",
