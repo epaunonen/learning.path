@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>learning.path — migrate localStorage → server</title>
+  <style>
+    body { font-family: monospace; background: #080e1a; color: #d6e4f7; padding: 2rem; }
+    pre  { background: #0d1625; border: 0.5px solid rgba(45,125,210,0.25); border-radius: 8px; padding: 1rem; white-space: pre-wrap; word-break: break-all; margin: 1rem 0; }
+    button { font-family: monospace; font-size: 13px; padding: 8px 18px; border-radius: 8px; border: 0.5px solid rgba(45,125,210,0.6); background: #1a4a7a; color: #3d9be8; cursor: pointer; margin-right: 8px; }
+    button:hover { background: #2d7dd2; color: #fff; }
+    .ok  { color: #3aab6c; }
+    .err { color: #d94f4f; }
+    h2 { margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h2>learning.path — one-time migration</h2>
+  <p>This page reads your <code>de_learn_v2</code> localStorage data and POSTs it to the server, so it lands in your mounted data directory.</p>
+  <p>Host this file alongside the app, open it in the same browser where your data lives, and click Migrate.</p>
+  <pre id="out">Loading localStorage...</pre>
+  <div>
+    <button id="btn-migrate" disabled>Migrate → server</button>
+    <button id="btn-clear" disabled>Clear localStorage (after confirming data is saved)</button>
+  </div>
+
+  <script>
+    const out = document.getElementById('out');
+    const btnMigrate = document.getElementById('btn-migrate');
+    const btnClear   = document.getElementById('btn-clear');
+
+    const raw = localStorage.getItem('de_learn_v2');
+    let data;
+
+    if (!raw) {
+      out.textContent = 'No de_learn_v2 key found in localStorage. Nothing to migrate.';
+    } else {
+      try {
+        data = JSON.parse(raw);
+        out.textContent = `Found ${data.length} item(s):\n\n` + JSON.stringify(data, null, 2);
+        btnMigrate.disabled = false;
+      } catch(e) {
+        out.textContent = 'Could not parse localStorage data: ' + e.message;
+      }
+    }
+
+    btnMigrate.addEventListener('click', async () => {
+      btnMigrate.disabled = true;
+      out.textContent = 'Sending to server...';
+      try {
+        const res = await fetch('/api/data', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        out.innerHTML = `<span class="ok">✓ Migration successful! ${data.length} items written to server.\n\nYou can now click "Clear localStorage" or just close this page and use the main app.</span>`;
+        btnClear.disabled = false;
+      } catch(e) {
+        out.innerHTML = `<span class="err">✗ Migration failed: ${e.message}\n\nMake sure you are serving this file from the same origin as the app.</span>`;
+        btnMigrate.disabled = false;
+      }
+    });
+
+    btnClear.addEventListener('click', () => {
+      if (confirm('Delete de_learn_v2 from localStorage? Your data is now on the server.')) {
+        localStorage.removeItem('de_learn_v2');
+        out.innerHTML += '\n\n<span class="ok">✓ localStorage cleared.</span>';
+        btnClear.disabled = true;
+      }
+    });
+  </script>
+</body>
+</html>
