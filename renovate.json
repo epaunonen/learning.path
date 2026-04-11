@@ -10,7 +10,7 @@
     {
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
-      "enabledManagers": ["node"],
+      "matchPackageNames": ["node"],
       "matchUpdateTypes": [
         "minor",
         "patch",
@@ -19,6 +19,10 @@
       "automerge": true,
       "automergeType": "branch",
       "ignoreTests": true
+    },
+    {
+      "excludePackageNames": ["node"],
+      "enabled": false
     }
   ]
 }
