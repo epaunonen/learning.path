@@ -1,11 +1,11 @@
 services:
   learning_path:
-    build: .
     container_name: learning_path
+    image: ghcr.io/epaunonen/learning.path:release
     restart: unless-stopped
     ports:
       - "8765:3000"
     environment:
       - DATA_DIR=/data
     volumes:
-      - /your/data/directory:/data
+      - your/data/directory:/data
