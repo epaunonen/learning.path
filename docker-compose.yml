@@ -1,7 +1,7 @@
 services:
-  learning.path:
+  learning_path:
     build: .
-    container_name: learning.path
+    container_name: learning_path
     restart: unless-stopped
     ports:
       - "8765:3000"
