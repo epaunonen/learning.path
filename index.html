@@ -8,317 +8,332 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg-page:    #080e1a;
-      --bg-surface: #0d1625;
-      --bg-raised:  #111e32;
-      --bg-hover:   #172540;
-      --bg-input:   #0a1220;
-      --accent:     #2d7dd2;
-      --accent-dim: #1a4a7a;
-      --accent-glow:#3d9be8;
-      --green:      #3aab6c;
-      --green-dim:  #1a4a2e;
-      --amber:      #d4900a;
-      --amber-dim:  #3d2800;
-      --red:        #d94f4f;
-      --red-dim:    #3d1414;
+      --bg-page:     #080e1a;
+      --bg-surface:  #0d1625;
+      --bg-raised:   #111e32;
+      --bg-hover:    #172540;
+      --bg-input:    #0a1220;
+      --accent:      #2d7dd2;
+      --accent-dim:  #1a4a7a;
+      --accent-glow: #3d9be8;
+      --green:       #3aab6c;
+      --green-dim:   #1a4a2e;
+      --amber:       #d4900a;
+      --amber-dim:   #3d2800;
+      --purple:      #8b5cf6;
+      --purple-dim:  #2d1a5e;
+      --red:         #d94f4f;
+      --red-dim:     #3d1414;
       --text-primary:   #d6e4f7;
       --text-secondary: #7a9bc4;
       --text-tertiary:  #3d5a7a;
-      --border-faint: rgba(45,125,210,0.12);
-      --border-mid:   rgba(45,125,210,0.25);
-      --border-accent:rgba(45,125,210,0.6);
+      --border-faint:  rgba(45,125,210,0.12);
+      --border-mid:    rgba(45,125,210,0.25);
+      --border-accent: rgba(45,125,210,0.6);
       --radius-md: 8px;
       --radius-lg: 12px;
-      --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
-      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --mono: 'JetBrains Mono','Fira Code','Cascadia Code',ui-monospace,monospace;
+      --sans: -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
     }
 
-    body {
-      font-family: var(--sans);
-      background: var(--bg-page);
-      color: var(--text-primary);
-      min-height: 100vh;
-      padding: 1.5rem;
-    }
+    body { font-family: var(--sans); background: var(--bg-page); color: var(--text-primary); min-height: 100vh; padding: 1.5rem; }
 
     input, select, textarea {
-      font-family: inherit;
-      font-size: 13px;
-      color: var(--text-primary);
-      background: var(--bg-input);
-      border: 0.5px solid var(--border-mid);
-      border-radius: var(--radius-md);
-      padding: 7px 10px;
-      outline: none;
+      font-family: inherit; font-size: 13px; color: var(--text-primary);
+      background: var(--bg-input); border: 0.5px solid var(--border-mid);
+      border-radius: var(--radius-md); padding: 7px 10px; outline: none;
       transition: border-color 0.15s;
     }
     input:focus, select:focus, textarea:focus { border-color: var(--accent); }
     select option { background: var(--bg-raised); }
 
     button {
-      font-family: inherit;
-      font-size: 13px;
-      color: var(--text-secondary);
-      background: transparent;
-      border: 0.5px solid var(--border-mid);
-      border-radius: var(--radius-md);
-      padding: 7px 10px;
-      cursor: pointer;
-      outline: none;
+      font-family: inherit; font-size: 13px; color: var(--text-secondary);
+      background: transparent; border: 0.5px solid var(--border-mid);
+      border-radius: var(--radius-md); padding: 7px 10px; cursor: pointer; outline: none;
       transition: background 0.13s, border-color 0.13s, color 0.13s;
     }
     button:hover { background: var(--bg-hover); color: var(--text-primary); border-color: var(--border-accent); }
 
-    .app { max-width: 1100px; margin: 0 auto; }
+    .app { max-width: 1200px; margin: 0 auto; }
 
-    .topbar {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 12px; margin-bottom: 1.5rem;
-    }
+    /* ── topbar ── */
+    .topbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 1.5rem; }
     .brand { display: flex; align-items: center; gap: 12px; }
     .brand-icon {
       width: 36px; height: 36px; border-radius: var(--radius-md);
       background: var(--accent-dim); border: 0.5px solid var(--border-accent);
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--mono); font-size: 11px; font-weight: 700;
-      color: var(--accent-glow); letter-spacing: 0.04em;
+      font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--accent-glow);
     }
-    .brand-title { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.01em; }
+    .brand-title { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--text-primary); }
     .brand-sub   { font-size: 11px; color: var(--text-tertiary); font-family: var(--mono); margin-top: 1px; }
 
-    .controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-
-    .filter-btn {
-      font-size: 11px; font-family: var(--mono);
-      padding: 4px 11px; border-radius: 20px;
-      border: 0.5px solid var(--border-faint);
-      color: var(--text-tertiary);
+    /* ── tabs ── */
+    .tabs { display: flex; gap: 4px; border-bottom: 0.5px solid var(--border-faint); margin-bottom: 1.5rem; }
+    .tab-btn {
+      font-family: var(--mono); font-size: 12px; font-weight: 600;
+      padding: 8px 18px; border-radius: var(--radius-md) var(--radius-md) 0 0;
+      border: 0.5px solid transparent; border-bottom: none;
+      color: var(--text-tertiary); background: transparent; cursor: pointer;
+      position: relative; top: 1px;
     }
+    .tab-btn:hover { color: var(--text-secondary); background: var(--bg-surface); border-color: var(--border-faint); }
+    .tab-btn.active { color: var(--accent-glow); background: var(--bg-surface); border-color: var(--border-faint); border-bottom-color: var(--bg-surface); }
+
+    /* ── stats ── */
+    .stats-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin-bottom: 1.5rem; }
+    .stat-card { background: var(--bg-surface); border: 0.5px solid var(--border-faint); border-radius: var(--radius-md); padding: 13px 15px; }
+    .stat-label { font-size: 10px; font-family: var(--mono); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; }
+    .stat-value { font-size: 23px; font-weight: 700; font-family: var(--mono); }
+
+    /* ── toolbar (filters + add) ── */
+    .toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 1.25rem; }
+    .filter-btn { font-size: 11px; font-family: var(--mono); padding: 4px 11px; border-radius: 20px; border: 0.5px solid var(--border-faint); color: var(--text-tertiary); }
     .filter-btn:hover { border-color: var(--border-accent); color: var(--text-secondary); background: var(--bg-hover); }
     .filter-btn.active { background: var(--accent-dim); color: var(--accent-glow); border-color: var(--border-accent); }
-
-    .tag-select {
-      font-family: var(--mono); font-size: 11px;
-      padding: 4px 9px; border-radius: 20px;
-      border: 0.5px solid var(--border-faint);
-      background: transparent; color: var(--text-tertiary);
-    }
-
-    .add-btn {
-      font-size: 12px; font-family: var(--mono);
-      padding: 6px 14px; border-radius: var(--radius-md);
-      border: 0.5px solid var(--border-accent);
-      color: var(--accent-glow); font-weight: 700;
-      background: var(--accent-dim);
-    }
+    .tag-select { font-family: var(--mono); font-size: 11px; padding: 4px 9px; border-radius: 20px; border: 0.5px solid var(--border-faint); background: transparent; color: var(--text-tertiary); }
+    .spacer { flex: 1; }
+    .add-btn { font-size: 12px; font-family: var(--mono); padding: 6px 14px; border-radius: var(--radius-md); border: 0.5px solid var(--border-accent); color: var(--accent-glow); font-weight: 700; background: var(--accent-dim); }
     .add-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-    .stats-row {
-      display: grid; grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 10px; margin-bottom: 1.5rem;
-    }
-    .stat-card {
-      background: var(--bg-surface);
-      border: 0.5px solid var(--border-faint);
-      border-radius: var(--radius-md); padding: 13px 15px;
-    }
-    .stat-label { font-size: 10px; font-family: var(--mono); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; }
-    .stat-value { font-size: 23px; font-weight: 700; font-family: var(--mono); color: var(--text-primary); }
-
+    /* ── kanban columns ── */
     .columns { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; align-items: start; }
-
-    .col-header {
-      display: flex; align-items: center; gap: 8px;
-      margin-bottom: 10px; padding-bottom: 9px;
-      border-bottom: 0.5px solid var(--border-faint);
-    }
+    .col-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; padding-bottom: 9px; border-bottom: 0.5px solid var(--border-faint); }
     .col-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
     .dot-backlog { background: var(--text-tertiary); }
     .dot-active  { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
     .dot-done    { background: var(--green); }
+    .dot-idea    { background: var(--purple); }
     .col-title { font-size: 10px; font-family: var(--mono); font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.1em; }
     .col-count { font-size: 10px; font-family: var(--mono); background: var(--bg-raised); color: var(--text-tertiary); padding: 1px 7px; border-radius: 10px; border: 0.5px solid var(--border-faint); }
 
-    .card {
-      background: var(--bg-surface);
-      border: 0.5px solid var(--border-faint);
-      border-radius: var(--radius-lg); padding: 12px 14px; margin-bottom: 8px;
-      cursor: pointer; transition: border-color 0.15s, background 0.15s;
-    }
+    /* ── cards ── */
+    .card { background: var(--bg-surface); border: 0.5px solid var(--border-faint); border-radius: var(--radius-lg); padding: 12px 14px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
     .card:hover { border-color: var(--border-mid); background: var(--bg-raised); }
     .card.selected { border-color: var(--accent); background: var(--bg-raised); }
+    .card.pri-high { border-left: 2px solid var(--red); }
+    .card.pri-medium { border-left: 2px solid var(--amber); }
 
     .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 7px; }
     .card-name { font-size: 13px; font-weight: 500; line-height: 1.35; color: var(--text-primary); }
+    .card-badges { display: flex; gap: 5px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
 
     .badge { font-size: 10px; font-family: var(--mono); padding: 2px 8px; border-radius: 10px; flex-shrink: 0; font-weight: 700; }
     .cert-yes { background: var(--amber-dim); color: var(--amber); border: 0.5px solid rgba(212,144,10,0.3); }
     .cert-no  { background: var(--bg-raised); color: var(--text-tertiary); border: 0.5px solid var(--border-faint); }
+    .pri-badge-high   { background: var(--red-dim);    color: var(--red);    border: 0.5px solid rgba(217,79,79,0.3); }
+    .pri-badge-medium { background: var(--amber-dim);  color: var(--amber);  border: 0.5px solid rgba(212,144,10,0.3); }
+    .pri-badge-low    { background: var(--bg-raised);  color: var(--text-tertiary); border: 0.5px solid var(--border-faint); }
+    .proj-badge { background: var(--purple-dim); color: var(--purple); border: 0.5px solid rgba(139,92,246,0.3); }
 
     .card-meta { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
     .tag { font-size: 10px; font-family: var(--mono); padding: 2px 7px; border-radius: 10px; background: var(--accent-dim); color: var(--accent-glow); border: 0.5px solid rgba(45,125,210,0.2); }
     .provider-tag { font-size: 10px; font-family: var(--mono); color: var(--text-tertiary); }
 
-    .card-link {
-      display: inline-flex; align-items: center; gap: 4px;
-      margin-top: 7px; font-size: 10px; font-family: var(--mono);
-      color: var(--accent-glow); text-decoration: none; opacity: 0.7;
-      transition: opacity 0.13s;
-    }
+    .card-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 7px; font-size: 10px; font-family: var(--mono); color: var(--accent-glow); text-decoration: none; opacity: 0.7; transition: opacity 0.13s; }
     .card-link:hover { opacity: 1; text-decoration: underline; }
+
+    .card-date { font-size: 10px; font-family: var(--mono); color: var(--text-tertiary); margin-top: 6px; }
+    .card-date.overdue { color: var(--red); }
+    .card-date.soon    { color: var(--amber); }
 
     .progress-bar { margin-top: 9px; height: 3px; background: var(--bg-page); border-radius: 2px; overflow: hidden; }
     .progress-fill { height: 100%; border-radius: 2px; background: var(--accent); }
     .progress-fill.done { background: var(--green); }
 
-    .empty-col {
-      border: 0.5px dashed var(--border-faint); border-radius: var(--radius-lg);
-      padding: 24px; text-align: center; font-size: 11px; color: var(--text-tertiary);
-      font-family: var(--mono);
-    }
+    .empty-col { border: 0.5px dashed var(--border-faint); border-radius: var(--radius-lg); padding: 24px; text-align: center; font-size: 11px; color: var(--text-tertiary); font-family: var(--mono); }
 
-    .detail-panel {
-      background: var(--bg-surface);
-      border: 0.5px solid var(--border-accent);
-      border-radius: var(--radius-lg); padding: 16px 18px; margin-bottom: 1.5rem;
-    }
+    /* ── detail panel ── */
+    .detail-panel { background: var(--bg-surface); border: 0.5px solid var(--border-accent); border-radius: var(--radius-lg); padding: 16px 18px; margin-bottom: 1.5rem; }
     .detail-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 4px; }
     .detail-name { font-size: 15px; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
-    .detail-close { font-size: 18px; border: none; background: none; color: var(--text-tertiary); padding: 0 6px; line-height: 1; }
+    .detail-close { font-size: 18px; border: none; background: none; color: var(--text-tertiary); padding: 0 6px; }
     .detail-close:hover { color: var(--text-primary); background: none; border: none; }
-
     .detail-sub { font-size: 11px; color: var(--text-tertiary); font-family: var(--mono); margin-bottom: 12px; }
-
-    .detail-url-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 12px; font-family: var(--mono);
-      color: var(--accent-glow); text-decoration: none;
-      background: var(--accent-dim); border: 0.5px solid var(--border-accent);
-      border-radius: var(--radius-md); padding: 5px 12px; margin-bottom: 12px;
-      transition: background 0.13s;
-    }
+    .detail-url-link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-family: var(--mono); color: var(--accent-glow); text-decoration: none; background: var(--accent-dim); border: 0.5px solid var(--border-accent); border-radius: var(--radius-md); padding: 5px 12px; margin-bottom: 12px; transition: background 0.13s; }
     .detail-url-link:hover { background: var(--bg-hover); }
-
     .move-btns { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; align-items: center; }
     .move-btn { font-size: 11px; font-family: var(--mono); padding: 4px 12px; border-radius: var(--radius-md); }
-    .del-btn {
-      font-size: 11px; font-family: var(--mono); padding: 4px 12px;
-      border-radius: var(--radius-md); margin-left: auto;
-      border-color: rgba(217,79,79,0.35); color: var(--red);
-    }
+    .del-btn { font-size: 11px; font-family: var(--mono); padding: 4px 12px; border-radius: var(--radius-md); margin-left: auto; border-color: rgba(217,79,79,0.35); color: var(--red); }
     .del-btn:hover { background: var(--red-dim); border-color: var(--red); color: var(--red); }
-
     .detail-fields { display: flex; flex-direction: column; gap: 10px; }
-    .detail-field label {
-      display: block; font-size: 10px; font-family: var(--mono);
-      color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px;
-    }
-    .detail-field input, .detail-field textarea { width: 100%; }
+    .detail-field label { display: block; font-size: 10px; font-family: var(--mono); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+    .detail-field input, .detail-field textarea, .detail-field select { width: 100%; }
     .detail-field textarea { height: 60px; resize: vertical; }
-
+    .detail-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .progress-row { display: flex; align-items: center; gap: 10px; }
     .progress-row input[type=range] { flex: 1; accent-color: var(--accent); }
     .progress-pct { font-size: 12px; font-family: var(--mono); color: var(--text-secondary); min-width: 32px; text-align: right; }
-
     .save-row { display: flex; justify-content: flex-end; margin-top: 6px; }
     .save-btn { font-size: 11px; font-family: var(--mono); padding: 5px 14px; border-radius: var(--radius-md); color: var(--accent-glow); border-color: var(--border-accent); }
     .save-btn:hover { background: var(--accent-dim); }
 
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(4,9,18,0.82);
-      display: flex; align-items: center; justify-content: center; z-index: 100; padding: 1rem;
-    }
-    .modal {
-      background: var(--bg-raised);
-      border: 0.5px solid var(--border-accent);
-      border-radius: var(--radius-lg); padding: 1.5rem; width: 100%; max-width: 460px;
-    }
+    /* ── timeline ── */
+    .timeline-wrap { position: relative; padding-left: 120px; }
+    .tl-axis { position: absolute; left: 110px; top: 0; bottom: 0; width: 0.5px; background: var(--border-mid); }
+    .tl-month { margin-bottom: 2rem; }
+    .tl-month-label { position: absolute; left: 0; width: 100px; font-size: 10px; font-family: var(--mono); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.07em; text-align: right; padding-right: 16px; margin-top: 2px; }
+    .tl-items { display: flex; flex-direction: column; gap: 8px; }
+    .tl-item { position: relative; background: var(--bg-surface); border: 0.5px solid var(--border-faint); border-radius: var(--radius-md); padding: 10px 14px; margin-left: 16px; transition: border-color 0.15s; }
+    .tl-item::before { content: ''; position: absolute; left: -20px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; border-radius: 50%; background: var(--bg-page); border: 1.5px solid var(--accent); }
+    .tl-item.type-project::before { border-color: var(--purple); }
+    .tl-item.pri-high::before   { border-color: var(--red); background: var(--red-dim); }
+    .tl-item.overdue { border-color: rgba(217,79,79,0.3); }
+    .tl-item:hover { border-color: var(--border-mid); }
+    .tl-item-top { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+    .tl-name { font-size: 13px; font-weight: 500; color: var(--text-primary); flex: 1; }
+    .tl-date { font-size: 10px; font-family: var(--mono); color: var(--text-tertiary); }
+    .tl-date.overdue { color: var(--red); }
+    .tl-date.soon    { color: var(--amber); }
+    .tl-meta { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tl-empty { font-size: 13px; color: var(--text-tertiary); font-family: var(--mono); padding: 2rem 0; }
+    .tl-no-date { margin-bottom: 2rem; }
+    .tl-no-date-label { font-size: 10px; font-family: var(--mono); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+
+    /* ── modal ── */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(4,9,18,0.82); display: flex; align-items: center; justify-content: center; z-index: 100; padding: 1rem; overflow-y: auto; }
+    .modal { background: var(--bg-raised); border: 0.5px solid var(--border-accent); border-radius: var(--radius-lg); padding: 1.5rem; width: 100%; max-width: 480px; margin: auto; }
     .modal-title { font-size: 14px; font-weight: 700; font-family: var(--mono); color: var(--text-primary); margin-bottom: 1.1rem; }
     .field { margin-bottom: 11px; }
     .field label { display: block; font-size: 10px; font-family: var(--mono); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
     .field input, .field select, .field textarea { width: 100%; }
     .field textarea { height: 56px; resize: vertical; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 11px; }
+    .field-row .field { margin-bottom: 0; }
     .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 1rem; }
-    .btn-primary {
-      padding: 7px 18px; border-radius: var(--radius-md); font-weight: 700;
-      font-family: var(--mono); font-size: 12px;
-      background: var(--accent); color: #fff; border: none;
-    }
+    .btn-primary { padding: 7px 18px; border-radius: var(--radius-md); font-weight: 700; font-family: var(--mono); font-size: 12px; background: var(--accent); color: #fff; border: none; }
     .btn-primary:hover { background: var(--accent-glow); color: #fff; border: none; }
     .btn-cancel { padding: 7px 14px; border-radius: var(--radius-md); font-family: var(--mono); font-size: 12px; }
+
+    /* ── skills crossref ── */
+    .skill-links { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .skill-link-tag { font-size: 10px; font-family: var(--mono); padding: 2px 8px; border-radius: 10px; background: var(--green-dim); color: var(--green); border: 0.5px solid rgba(58,171,108,0.3); cursor: default; }
+
+    /* ── error banner ── */
+    #error-banner { display:none; position:fixed; top:1rem; right:1rem; background:var(--red-dim); color:#f09595; border:0.5px solid rgba(217,79,79,0.5); border-radius:8px; padding:8px 14px; font-family:var(--mono); font-size:12px; z-index:200; }
 
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg-page); }
     ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
 
-    @media (max-width: 640px) {
+    @media (max-width: 700px) {
       .columns { grid-template-columns: 1fr; }
       .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .timeline-wrap { padding-left: 0; }
+      .tl-axis, .tl-month-label { display: none; }
+      .tl-item { margin-left: 0; }
+      .tl-item::before { display: none; }
     }
   </style>
 </head>
 <body>
+<div id="error-banner"></div>
 <div class="app" id="app"></div>
 
 <script>
 (function() {
   const PROVIDERS = ['Confluent','Databricks','dbt Labs','Google','AWS','Azure','Coursera','Linux Foundation','HashiCorp','DataCamp','Udemy','Snowflake','Starburst','Airbyte','Fivetran'];
 
-  // reads existing de_learn_v2 — new `url` field defaults to '' so old items are safe
-  let raw = JSON.parse(localStorage.getItem('de_learn_v2') || 'null');
-  let items = (raw || []).map(i => ({ url: '', ...i }));
+  // ── state ─────────────────────────────────────────────────────────────────
+  let items    = [];   // learning items
+  let projects = [];   // projects
+  let nextItemId = 1;
+  let nextProjId = 1;
 
-  if (!items.length) {
-    items = [
-      { id:1, name:'Apache Kafka Fundamentals', provider:'Confluent', tags:['Streaming','Kafka'], cert:true, status:'done', progress:100, url:'https://developer.confluent.io/courses/apache-kafka/get-started/', notes:'Completed the free learning path. Schema registry was the hardest part.' },
-      { id:2, name:'dbt Fundamentals', provider:'dbt Labs', tags:['SQL','dbt'], cert:true, status:'done', progress:100, url:'https://learn.getdbt.com/courses/dbt-fundamentals', notes:'Passed on first attempt.' },
-      { id:3, name:'Databricks Data Engineer Associate', provider:'Databricks', tags:['Spark','Python','Delta'], cert:true, status:'active', progress:65, url:'https://www.databricks.com/learn/certification/data-engineer-associate', notes:'Exam scheduled for May. Revising Delta Lake internals.' },
-      { id:4, name:'Apache Airflow Bootcamp', provider:'Udemy', tags:['Orchestration','Python'], cert:false, status:'active', progress:30, url:'', notes:'' },
-      { id:5, name:'Terraform Associate', provider:'HashiCorp', tags:['Terraform','Infra'], cert:true, status:'backlog', progress:0, url:'https://developer.hashicorp.com/certifications/infrastructure-automation', notes:'' },
-      { id:6, name:'Google Professional Data Engineer', provider:'Google', tags:['Cloud','Batch','BigQuery'], cert:true, status:'backlog', progress:0, url:'https://cloud.google.com/learn/certification/data-engineer', notes:'' },
-      { id:7, name:'SnowPro Core Certification', provider:'Snowflake', tags:['Cloud','Storage','SQL'], cert:true, status:'backlog', progress:0, url:'https://learn.snowflake.com/en/certifications/snowpro-core/', notes:'' },
-      { id:8, name:'Kafka Streams & KSQL Deep Dive', provider:'Confluent', tags:['Streaming','Kafka'], cert:false, status:'backlog', progress:0, url:'', notes:'Follow-up after Kafka Fundamentals.' },
-      { id:9, name:'Advanced Analytics Engineering', provider:'dbt Labs', tags:['SQL','dbt','Governance'], cert:false, status:'backlog', progress:0, url:'', notes:'' },
-    ];
+  let activeTab    = 'learning';  // learning | projects | timeline
+  let learnFilter  = { cert: 'all', tag: 'all' };
+  let projFilter   = { tag: 'all' };
+  let selectedItem = null;  // { type: 'item'|'project', id }
+  let showModal    = null;  // null | 'item' | 'project'
+
+  // ── persistence ───────────────────────────────────────────────────────────
+  async function loadData() {
+    try {
+      const res  = await fetch('/api/data');
+      const data = await res.json();
+      if (data && typeof data === 'object') {
+        if (Array.isArray(data.items)) {
+          items = data.items.map(i => ({ url:'', priority:'medium', targetDate:'', ...i }));
+          nextItemId = items.length ? Math.max(...items.map(i=>i.id)) + 1 : 1;
+        } else if (Array.isArray(data)) {
+          // legacy: plain array = old items format
+          items = data.map(i => ({ url:'', priority:'medium', targetDate:'', ...i }));
+          nextItemId = items.length ? Math.max(...items.map(i=>i.id)) + 1 : 1;
+        }
+        if (Array.isArray(data.projects)) {
+          projects = data.projects.map(p => ({ url:'', repoUrl:'', priority:'medium', targetDate:'', skills:[], notes:'', ...p }));
+          nextProjId = projects.length ? Math.max(...projects.map(p=>p.id)) + 1 : 1;
+        }
+      }
+    } catch(e) { showError('Could not load data from server.'); }
+    render();
   }
 
-  let nextId = items.length ? Math.max(...items.map(i=>i.id)) + 1 : 1;
-  let filterTag = 'all', filterCert = 'all', selectedId = null, showModal = false;
+  function save() {
+    fetch('/api/data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items, projects }),
+    }).catch(() => showError('Save failed — check server connection.'));
+  }
 
-  function save() { try { localStorage.setItem('de_learn_v2', JSON.stringify(items)); } catch(e) {} }
+  function showError(msg) {
+    const el = document.getElementById('error-banner');
+    if (el) { el.textContent = msg; el.style.display = 'block'; setTimeout(() => { el.style.display = 'none'; }, 4000); }
+  }
 
-  function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  // ── helpers ───────────────────────────────────────────────────────────────
+  const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
-  function filtered() {
+  const LINK_SVG = `<svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-4M9 1h6m0 0v6m0-6L7 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+  function dateClass(dateStr, done) {
+    if (!dateStr || done) return '';
+    const diff = (new Date(dateStr) - new Date()) / 86400000;
+    if (diff < 0)  return 'overdue';
+    if (diff < 14) return 'soon';
+    return '';
+  }
+
+  function fmtDate(dateStr) {
+    if (!dateStr) return '';
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+  }
+
+  function allTags() { return [...new Set(items.flatMap(i=>i.tags))].sort(); }
+  function allProjTags() { return [...new Set(projects.flatMap(p=>p.skills))].sort(); }
+
+  function filteredItems() {
     return items.filter(i => {
-      const tagOk  = filterTag  === 'all' || i.tags.includes(filterTag);
-      const certOk = filterCert === 'all' || (filterCert === 'cert' ? i.cert : !i.cert);
+      const tagOk  = learnFilter.tag  === 'all' || i.tags.includes(learnFilter.tag);
+      const certOk = learnFilter.cert === 'all' || (learnFilter.cert === 'cert' ? i.cert : !i.cert);
       return tagOk && certOk;
     });
   }
 
-  function colItems(status) { return filtered().filter(i => i.status === status); }
-
-  function stats() {
-    return {
-      total:  items.length,
-      active: items.filter(i=>i.status==='active').length,
-      done:   items.filter(i=>i.status==='done').length,
-      certs:  items.filter(i=>i.cert && i.status==='done').length,
-    };
+  function filteredProjects() {
+    return projects.filter(p => projFilter.tag === 'all' || p.skills.includes(projFilter.tag));
   }
 
-  function getSelected() { return selectedId ? items.find(i=>i.id===selectedId) : null; }
+  function priBadge(pri) {
+    if (pri === 'high')   return `<span class="badge pri-badge-high">high</span>`;
+    if (pri === 'medium') return `<span class="badge pri-badge-medium">med</span>`;
+    return `<span class="badge pri-badge-low">low</span>`;
+  }
 
-  const LINK_SVG = `<svg width="11" height="11" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-4M9 1h6m0 0v6m0-6L7 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  // learning items that a project's skills intersect
+  function linkedItems(proj) {
+    if (!proj.skills || !proj.skills.length) return [];
+    return items.filter(i => i.tags.some(t => proj.skills.includes(t)));
+  }
 
+  // ── render ────────────────────────────────────────────────────────────────
   function render() {
-    const s = stats();
-    const sel = getSelected();
-    const cols = ['backlog','active','done'];
-    const colLabels = { backlog:'Backlog', active:'In progress', done:'Completed' };
-    const uniqueTags = [...new Set(items.flatMap(i=>i.tags))].sort();
+    const sel = selectedItem
+      ? (selectedItem.type === 'item' ? items.find(i=>i.id===selectedItem.id) : projects.find(p=>p.id===selectedItem.id))
+      : null;
 
     document.getElementById('app').innerHTML = `
       <div class="topbar">
@@ -329,174 +344,530 @@
             <div class="brand-sub">data engineering tracker</div>
           </div>
         </div>
-        <div class="controls">
-          <button class="filter-btn ${filterCert==='all'?'active':''}" onclick="setCertFilter('all')">all</button>
-          <button class="filter-btn ${filterCert==='cert'?'active':''}" onclick="setCertFilter('cert')">cert only</button>
-          <button class="filter-btn ${filterCert==='course'?'active':''}" onclick="setCertFilter('course')">courses</button>
-          <select class="tag-select" onchange="setTagFilter(this.value)">
-            <option value="all" ${filterTag==='all'?'selected':''}>all topics</option>
-            ${uniqueTags.map(t=>`<option value="${esc(t)}" ${filterTag===t?'selected':''}>${esc(t)}</option>`).join('')}
-          </select>
-          <button class="add-btn" onclick="openModal()">+ add item</button>
-        </div>
       </div>
 
+      <div class="tabs">
+        <button class="tab-btn ${activeTab==='learning'?'active':''}" onclick="setTab('learning')">learning</button>
+        <button class="tab-btn ${activeTab==='projects'?'active':''}" onclick="setTab('projects')">projects</button>
+        <button class="tab-btn ${activeTab==='timeline'?'active':''}" onclick="setTab('timeline')">timeline</button>
+      </div>
+
+      ${activeTab === 'learning'  ? renderLearning(sel) : ''}
+      ${activeTab === 'projects'  ? renderProjects(sel) : ''}
+      ${activeTab === 'timeline'  ? renderTimeline()    : ''}
+      ${showModal === 'item'    ? renderItemModal()    : ''}
+      ${showModal === 'project' ? renderProjectModal() : ''}
+    `;
+  }
+
+  // ── learning tab ──────────────────────────────────────────────────────────
+  function renderLearning(sel) {
+    const s = {
+      total:  items.length,
+      active: items.filter(i=>i.status==='active').length,
+      done:   items.filter(i=>i.status==='done').length,
+      certs:  items.filter(i=>i.cert && i.status==='done').length,
+    };
+    const cols     = ['backlog','active','done'];
+    const colLabel = { backlog:'Backlog', active:'In progress', done:'Completed' };
+    const fi       = filteredItems();
+
+    return `
       <div class="stats-row">
-        <div class="stat-card"><div class="stat-label">total items</div><div class="stat-value">${s.total}</div></div>
+        <div class="stat-card"><div class="stat-label">total</div><div class="stat-value">${s.total}</div></div>
         <div class="stat-card"><div class="stat-label">in progress</div><div class="stat-value" style="color:var(--accent-glow)">${s.active}</div></div>
         <div class="stat-card"><div class="stat-label">completed</div><div class="stat-value" style="color:var(--green)">${s.done}</div></div>
         <div class="stat-card"><div class="stat-label">certs earned</div><div class="stat-value" style="color:var(--amber)">${s.certs}</div></div>
       </div>
 
-      ${sel ? `
-      <div class="detail-panel">
-        <div class="detail-top">
-          <span class="detail-name">${esc(sel.name)}</span>
-          <button class="detail-close" onclick="closeDetail()">×</button>
-        </div>
-        <div class="detail-sub">${esc(sel.provider)} · ${sel.cert?'certification track':'course / learning path'}</div>
+      ${sel && selectedItem?.type === 'item' ? renderItemDetail(sel) : ''}
 
-        ${sel.url ? `<a class="detail-url-link" href="${esc(sel.url)}" target="_blank" rel="noopener">${LINK_SVG} open course page</a>` : ''}
-
-        <div class="move-btns">
-          ${sel.status!=='backlog'?`<button class="move-btn" onclick="moveTo(${sel.id},'backlog')">→ backlog</button>`:''}
-          ${sel.status!=='active'?`<button class="move-btn" onclick="moveTo(${sel.id},'active')">→ in progress</button>`:''}
-          ${sel.status!=='done'?`<button class="move-btn" onclick="moveTo(${sel.id},'done')">→ completed</button>`:''}
-          <button class="del-btn" onclick="deleteItem(${sel.id})">remove</button>
-        </div>
-
-        <div class="detail-fields">
-          <div class="detail-field">
-            <label>course / materials url</label>
-            <input id="det-url" type="url" placeholder="https://..." value="${esc(sel.url||'')}" />
-          </div>
-          ${sel.status==='active'?`
-          <div class="detail-field">
-            <label>progress</label>
-            <div class="progress-row">
-              <input type="range" min="0" max="100" step="5" value="${sel.progress}" oninput="liveProgress(${sel.id},+this.value)" />
-              <span class="progress-pct" id="pct-out">${sel.progress}%</span>
-            </div>
-          </div>`:''}
-          <div class="detail-field">
-            <label>notes</label>
-            <textarea id="det-notes" placeholder="exam date, key topics, thoughts...">${esc(sel.notes||'')}</textarea>
-          </div>
-        </div>
-        <div class="save-row">
-          <button class="save-btn" onclick="saveDetail(${sel.id})">save changes</button>
-        </div>
-      </div>` : ''}
+      <div class="toolbar">
+        <button class="filter-btn ${learnFilter.cert==='all'?'active':''}"    onclick="setLearnFilter('cert','all')">all</button>
+        <button class="filter-btn ${learnFilter.cert==='cert'?'active':''}"   onclick="setLearnFilter('cert','cert')">cert only</button>
+        <button class="filter-btn ${learnFilter.cert==='course'?'active':''}" onclick="setLearnFilter('cert','course')">courses</button>
+        <select class="tag-select" onchange="setLearnFilter('tag',this.value)">
+          <option value="all" ${learnFilter.tag==='all'?'selected':''}>all topics</option>
+          ${allTags().map(t=>`<option value="${esc(t)}" ${learnFilter.tag===t?'selected':''}>${esc(t)}</option>`).join('')}
+        </select>
+        <div class="spacer"></div>
+        <button class="add-btn" onclick="openModal('item')">+ add item</button>
+      </div>
 
       <div class="columns">
         ${cols.map(status => {
-          const ci = colItems(status);
+          const ci = fi.filter(i=>i.status===status).sort((a,b) => {
+            const po = { high:0, medium:1, low:2 };
+            return (po[a.priority]??1) - (po[b.priority]??1);
+          });
           return `<div>
             <div class="col-header">
               <div class="col-dot dot-${status}"></div>
-              <span class="col-title">${colLabels[status]}</span>
+              <span class="col-title">${colLabel[status]}</span>
               <span class="col-count">${ci.length}</span>
             </div>
             ${ci.length===0?`<div class="empty-col">nothing here yet</div>`:''}
-            ${ci.map(item=>`
-            <div class="card ${selectedId===item.id?'selected':''}" onclick="selectItem(${item.id})">
-              <div class="card-top">
-                <span class="card-name">${esc(item.name)}</span>
-                <span class="badge ${item.cert?'cert-yes':'cert-no'}">${item.cert?'cert':'course'}</span>
-              </div>
-              <div class="card-meta">
-                <span class="provider-tag">${esc(item.provider)}</span>
-                ${item.tags.slice(0,3).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
-              </div>
-              ${item.url?`<a class="card-link" href="${esc(item.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${LINK_SVG}&nbsp;open</a>`:''}
-              ${item.status==='active'&&item.progress>0?`<div class="progress-bar"><div class="progress-fill" style="width:${item.progress}%"></div></div>`:''}
-              ${item.status==='done'?`<div class="progress-bar"><div class="progress-fill done" style="width:100%"></div></div>`:''}
-            </div>`).join('')}
+            ${ci.map(item => {
+              const dc = dateClass(item.targetDate, item.status==='done');
+              return `<div class="card pri-${item.priority||'medium'} ${selectedItem?.id===item.id&&selectedItem?.type==='item'?'selected':''}" onclick="selectCard('item',${item.id})">
+                <div class="card-top">
+                  <span class="card-name">${esc(item.name)}</span>
+                  <div class="card-badges">
+                    ${priBadge(item.priority||'medium')}
+                    <span class="badge ${item.cert?'cert-yes':'cert-no'}">${item.cert?'cert':'course'}</span>
+                  </div>
+                </div>
+                <div class="card-meta">
+                  <span class="provider-tag">${esc(item.provider)}</span>
+                  ${item.tags.slice(0,3).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
+                </div>
+                ${item.url?`<a class="card-link" href="${esc(item.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${LINK_SVG}&nbsp;open</a>`:''}
+                ${item.targetDate && item.status!=='done'?`<div class="card-date ${dc}">⊙ ${fmtDate(item.targetDate)}${dc==='overdue'?' · overdue':dc==='soon'?' · soon':''}
+                </div>`:''}
+                ${item.status==='active'&&item.progress>0?`<div class="progress-bar"><div class="progress-fill" style="width:${item.progress}%"></div></div>`:''}
+                ${item.status==='done'?`<div class="progress-bar"><div class="progress-fill done" style="width:100%"></div></div>`:''}
+              </div>`;
+            }).join('')}
           </div>`;
         }).join('')}
-      </div>
-
-      ${showModal?`
-      <div class="modal-overlay" onclick="if(event.target===this)closeModal()">
-        <div class="modal">
-          <div class="modal-title">+ add learning item</div>
-          <div class="field"><label>name / course title</label><input id="m-name" type="text" placeholder="e.g. Apache Flink on Confluent Cloud" /></div>
-          <div class="field">
-            <label>provider</label>
-            <input id="m-provider" type="text" placeholder="e.g. Confluent, Databricks" list="plist" />
-            <datalist id="plist">${PROVIDERS.map(p=>`<option value="${esc(p)}">`).join('')}</datalist>
-          </div>
-          <div class="field"><label>course / materials url</label><input id="m-url" type="url" placeholder="https://..." /></div>
-          <div class="field"><label>topics (comma separated)</label><input id="m-tags" type="text" placeholder="e.g. Streaming, Kafka, Python" /></div>
-          <div class="field"><label>type</label><select id="m-cert"><option value="true">certification track</option><option value="false">course / learning path</option></select></div>
-          <div class="field"><label>status</label><select id="m-status"><option value="backlog">backlog</option><option value="active">in progress</option><option value="done">completed</option></select></div>
-          <div class="field"><label>notes</label><textarea id="m-notes" placeholder="exam date, resources, thoughts..."></textarea></div>
-          <div class="modal-actions">
-            <button class="btn-cancel" onclick="closeModal()">cancel</button>
-            <button class="btn-primary" onclick="addItem()">add</button>
-          </div>
-        </div>
-      </div>`:''}
-    `;
+      </div>`;
   }
 
-  window.setCertFilter = v => { filterCert=v; selectedId=null; render(); };
-  window.setTagFilter  = v => { filterTag=v; selectedId=null; render(); };
-  window.openModal     = () => { showModal=true; render(); };
-  window.closeModal    = () => { showModal=false; render(); };
-  window.selectItem    = id => { selectedId=selectedId===id?null:id; render(); };
-  window.closeDetail   = () => { selectedId=null; render(); };
+  function renderItemDetail(item) {
+    const dc = dateClass(item.targetDate, item.status==='done');
+    return `<div class="detail-panel">
+      <div class="detail-top">
+        <span class="detail-name">${esc(item.name)}</span>
+        <button class="detail-close" onclick="closeDetail()">×</button>
+      </div>
+      <div class="detail-sub">${esc(item.provider)} · ${item.cert?'certification track':'course / learning path'}</div>
+      ${item.url?`<a class="detail-url-link" href="${esc(item.url)}" target="_blank" rel="noopener">${LINK_SVG} open course page</a>`:''}
+      <div class="move-btns">
+        ${item.status!=='backlog'?`<button class="move-btn" onclick="moveItem(${item.id},'backlog')">→ backlog</button>`:''}
+        ${item.status!=='active'?`<button class="move-btn" onclick="moveItem(${item.id},'active')">→ in progress</button>`:''}
+        ${item.status!=='done'?`<button class="move-btn" onclick="moveItem(${item.id},'done')">→ completed</button>`:''}
+        <button class="del-btn" onclick="deleteItem(${item.id})">remove</button>
+      </div>
+      <div class="detail-fields">
+        <div class="detail-row-2">
+          <div class="detail-field">
+            <label>priority</label>
+            <select id="det-priority">
+              <option value="high"   ${item.priority==='high'  ?'selected':''}>high</option>
+              <option value="medium" ${item.priority==='medium'?'selected':''}>medium</option>
+              <option value="low"    ${item.priority==='low'   ?'selected':''}>low</option>
+            </select>
+          </div>
+          <div class="detail-field">
+            <label>target date</label>
+            <input id="det-date" type="date" value="${esc(item.targetDate||'')}" />
+          </div>
+        </div>
+        <div class="detail-field">
+          <label>course / materials url</label>
+          <input id="det-url" type="url" placeholder="https://..." value="${esc(item.url||'')}" />
+        </div>
+        ${item.status==='active'?`
+        <div class="detail-field">
+          <label>progress</label>
+          <div class="progress-row">
+            <input type="range" min="0" max="100" step="5" value="${item.progress}" oninput="liveProgress(${item.id},+this.value)" />
+            <span class="progress-pct" id="pct-out">${item.progress}%</span>
+          </div>
+        </div>`:''}
+        <div class="detail-field">
+          <label>notes</label>
+          <textarea id="det-notes" placeholder="exam date, key topics, thoughts...">${esc(item.notes||'')}</textarea>
+        </div>
+      </div>
+      <div class="save-row">
+        <button class="save-btn" onclick="saveItemDetail(${item.id})">save changes</button>
+      </div>
+    </div>`;
+  }
 
-  window.moveTo = (id, status) => {
-    const item = items.find(i=>i.id===id);
-    if (!item) return;
-    item.status=status;
-    if (status==='done') item.progress=100;
-    if (status==='backlog') item.progress=0;
+  // ── projects tab ──────────────────────────────────────────────────────────
+  function renderProjects(sel) {
+    const cols     = ['idea','active','done'];
+    const colLabel = { idea:'Ideas', active:'In progress', done:'Shipped' };
+    const fp       = filteredProjects();
+    const allSkills = allProjTags();
+
+    return `
+      <div class="toolbar">
+        <select class="tag-select" onchange="setProjFilter('tag',this.value)">
+          <option value="all" ${projFilter.tag==='all'?'selected':''}>all skills</option>
+          ${allSkills.map(t=>`<option value="${esc(t)}" ${projFilter.tag===t?'selected':''}>${esc(t)}</option>`).join('')}
+        </select>
+        <div class="spacer"></div>
+        <button class="add-btn" onclick="openModal('project')">+ add project</button>
+      </div>
+
+      ${sel && selectedItem?.type === 'project' ? renderProjectDetail(sel) : ''}
+
+      <div class="columns">
+        ${cols.map(status => {
+          const cp = fp.filter(p=>p.status===status).sort((a,b) => {
+            const po = { high:0, medium:1, low:2 };
+            return (po[a.priority]??1) - (po[b.priority]??1);
+          });
+          return `<div>
+            <div class="col-header">
+              <div class="col-dot ${status==='idea'?'dot-idea':status==='active'?'dot-active':'dot-done'}"></div>
+              <span class="col-title">${colLabel[status]}</span>
+              <span class="col-count">${cp.length}</span>
+            </div>
+            ${cp.length===0?`<div class="empty-col">nothing here yet</div>`:''}
+            ${cp.map(proj => {
+              const dc = dateClass(proj.targetDate, proj.status==='done');
+              return `<div class="card pri-${proj.priority||'medium'} ${selectedItem?.id===proj.id&&selectedItem?.type==='project'?'selected':''}" onclick="selectCard('project',${proj.id})">
+                <div class="card-top">
+                  <span class="card-name">${esc(proj.name)}</span>
+                  <div class="card-badges">
+                    ${priBadge(proj.priority||'medium')}
+                    <span class="badge proj-badge">project</span>
+                  </div>
+                </div>
+                ${proj.description?`<div style="font-size:12px;color:var(--text-secondary);margin-bottom:6px;line-height:1.4">${esc(proj.description)}</div>`:''}
+                <div class="card-meta">
+                  ${proj.skills.slice(0,4).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
+                </div>
+                ${proj.url||proj.repoUrl?`<div style="display:flex;gap:10px;margin-top:7px;">
+                  ${proj.url?`<a class="card-link" href="${esc(proj.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${LINK_SVG}&nbsp;demo</a>`:''}
+                  ${proj.repoUrl?`<a class="card-link" href="${esc(proj.repoUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${LINK_SVG}&nbsp;repo</a>`:''}
+                </div>`:''}
+                ${proj.targetDate && proj.status!=='done'?`<div class="card-date ${dc}">⊙ ${fmtDate(proj.targetDate)}${dc==='overdue'?' · overdue':dc==='soon'?' · soon':''}</div>`:''}
+              </div>`;
+            }).join('')}
+          </div>`;
+        }).join('')}
+      </div>`;
+  }
+
+  function renderProjectDetail(proj) {
+    const linked = linkedItems(proj);
+    return `<div class="detail-panel">
+      <div class="detail-top">
+        <span class="detail-name">${esc(proj.name)}</span>
+        <button class="detail-close" onclick="closeDetail()">×</button>
+      </div>
+      <div class="detail-sub">project · ${proj.status}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+        ${proj.url?`<a class="detail-url-link" href="${esc(proj.url)}" target="_blank" rel="noopener">${LINK_SVG} live demo</a>`:''}
+        ${proj.repoUrl?`<a class="detail-url-link" href="${esc(proj.repoUrl)}" target="_blank" rel="noopener">${LINK_SVG} repo</a>`:''}
+      </div>
+      <div class="move-btns">
+        ${proj.status!=='idea'?`<button class="move-btn" onclick="moveProject(${proj.id},'idea')">→ idea</button>`:''}
+        ${proj.status!=='active'?`<button class="move-btn" onclick="moveProject(${proj.id},'active')">→ in progress</button>`:''}
+        ${proj.status!=='done'?`<button class="move-btn" onclick="moveProject(${proj.id},'done')">→ shipped</button>`:''}
+        <button class="del-btn" onclick="deleteProject(${proj.id})">remove</button>
+      </div>
+      <div class="detail-fields">
+        <div class="detail-row-2">
+          <div class="detail-field">
+            <label>priority</label>
+            <select id="det-proj-priority">
+              <option value="high"   ${proj.priority==='high'  ?'selected':''}>high</option>
+              <option value="medium" ${proj.priority==='medium'?'selected':''}>medium</option>
+              <option value="low"    ${proj.priority==='low'   ?'selected':''}>low</option>
+            </select>
+          </div>
+          <div class="detail-field">
+            <label>target date</label>
+            <input id="det-proj-date" type="date" value="${esc(proj.targetDate||'')}" />
+          </div>
+        </div>
+        <div class="detail-field">
+          <label>description</label>
+          <textarea id="det-proj-desc" placeholder="what you're building and why...">${esc(proj.description||'')}</textarea>
+        </div>
+        <div class="detail-field">
+          <label>skills used (comma separated)</label>
+          <input id="det-proj-skills" type="text" value="${esc((proj.skills||[]).join(', '))}" placeholder="e.g. Kafka, dbt, Spark" />
+        </div>
+        <div class="detail-row-2">
+          <div class="detail-field">
+            <label>live / demo url</label>
+            <input id="det-proj-url" type="url" placeholder="https://..." value="${esc(proj.url||'')}" />
+          </div>
+          <div class="detail-field">
+            <label>repo url</label>
+            <input id="det-proj-repo" type="url" placeholder="https://github.com/..." value="${esc(proj.repoUrl||'')}" />
+          </div>
+        </div>
+        <div class="detail-field">
+          <label>notes</label>
+          <textarea id="det-proj-notes" placeholder="design decisions, blockers, ideas...">${esc(proj.notes||'')}</textarea>
+        </div>
+      </div>
+      ${linked.length ? `
+      <div style="margin-top:12px;">
+        <div style="font-size:10px;font-family:var(--mono);color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:6px;">linked learning items</div>
+        <div class="skill-links">
+          ${linked.map(i=>`<span class="skill-link-tag">${esc(i.name)}</span>`).join('')}
+        </div>
+      </div>` : ''}
+      <div class="save-row">
+        <button class="save-btn" onclick="saveProjectDetail(${proj.id})">save changes</button>
+      </div>
+    </div>`;
+  }
+
+  // ── timeline tab ──────────────────────────────────────────────────────────
+  function renderTimeline() {
+    // combine items + projects that have a target date
+    const dated = [
+      ...items.map(i => ({ ...i, _type:'item' })),
+      ...projects.map(p => ({ ...p, _type:'project' })),
+    ].filter(x => x.targetDate);
+
+    const undated = [
+      ...items.filter(i=>!i.targetDate).map(i=>({...i,_type:'item'})),
+      ...projects.filter(p=>!p.targetDate).map(p=>({...p,_type:'project'})),
+    ].sort((a,b) => {
+      const po = { high:0, medium:1, low:2 };
+      return (po[a.priority]??1) - (po[b.priority]??1);
+    });
+
+    if (!dated.length && !undated.length) {
+      return `<div class="tl-empty">No items yet. Add learning items or projects to see them here.</div>`;
+    }
+
+    // group by month
+    dated.sort((a,b) => new Date(a.targetDate) - new Date(b.targetDate));
+    const months = {};
+    for (const x of dated) {
+      const d   = new Date(x.targetDate);
+      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+      const lbl = d.toLocaleDateString('en-GB', { month:'long', year:'numeric' });
+      if (!months[key]) months[key] = { label: lbl, items: [] };
+      months[key].items.push(x);
+    }
+
+    return `
+      <div class="timeline-wrap">
+        <div class="tl-axis"></div>
+        ${Object.values(months).map(m => `
+        <div class="tl-month" style="position:relative;">
+          <div class="tl-month-label">${m.label}</div>
+          <div class="tl-items">
+            ${m.items.map(x => {
+              const dc   = dateClass(x.targetDate, x.status==='done');
+              const done = x.status === 'done';
+              return `<div class="tl-item type-${x._type} pri-${x.priority||'medium'} ${dc==='overdue'?'overdue':''}">
+                <div class="tl-item-top">
+                  ${x._type==='project'?`<span class="badge proj-badge" style="font-size:9px;">proj</span>`:`<span class="badge ${x.cert?'cert-yes':'cert-no'}" style="font-size:9px;">${x.cert?'cert':'course'}</span>`}
+                  ${priBadge(x.priority||'medium')}
+                  <span class="tl-name">${esc(x.name)}</span>
+                  <span class="tl-date ${dc}">${fmtDate(x.targetDate)}${dc==='overdue'?' · overdue':dc==='soon'?' · soon':''}</span>
+                  ${done?`<span style="font-size:10px;color:var(--green);font-family:var(--mono);">✓ done</span>`:''}
+                </div>
+                <div class="tl-meta">
+                  ${x._type==='item'?`<span class="provider-tag">${esc(x.provider)}</span>`:''}
+                  ${(x._type==='item'?x.tags:x.skills).slice(0,4).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
+                </div>
+              </div>`;
+            }).join('')}
+          </div>
+        </div>`).join('')}
+
+        ${undated.length ? `
+        <div class="tl-no-date">
+          <div class="tl-no-date-label">no target date set</div>
+          <div class="tl-items">
+            ${undated.map(x => `
+            <div class="tl-item type-${x._type}" style="opacity:0.55;">
+              <div class="tl-item-top">
+                ${x._type==='project'?`<span class="badge proj-badge" style="font-size:9px;">proj</span>`:`<span class="badge ${x.cert?'cert-yes':'cert-no'}" style="font-size:9px;">${x.cert?'cert':'course'}</span>`}
+                ${priBadge(x.priority||'medium')}
+                <span class="tl-name">${esc(x.name)}</span>
+              </div>
+            </div>`).join('')}
+          </div>
+        </div>` : ''}
+      </div>`;
+  }
+
+  // ── modals ────────────────────────────────────────────────────────────────
+  function renderItemModal() {
+    return `<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+      <div class="modal">
+        <div class="modal-title">+ add learning item</div>
+        <div class="field"><label>name / course title</label><input id="m-name" type="text" placeholder="e.g. Apache Flink on Confluent Cloud" /></div>
+        <div class="field">
+          <label>provider</label>
+          <input id="m-provider" type="text" placeholder="e.g. Confluent, Databricks" list="plist" />
+          <datalist id="plist">${PROVIDERS.map(p=>`<option value="${esc(p)}">`).join('')}</datalist>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>priority</label>
+            <select id="m-priority"><option value="medium" selected>medium</option><option value="high">high</option><option value="low">low</option></select>
+          </div>
+          <div class="field">
+            <label>type</label>
+            <select id="m-cert"><option value="true">certification</option><option value="false" selected>course</option></select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>status</label>
+            <select id="m-status"><option value="backlog" selected>backlog</option><option value="active">in progress</option><option value="done">completed</option></select>
+          </div>
+          <div class="field">
+            <label>target date</label>
+            <input id="m-date" type="date" />
+          </div>
+        </div>
+        <div class="field"><label>topics (comma separated)</label><input id="m-tags" type="text" placeholder="e.g. Streaming, Kafka, Python" /></div>
+        <div class="field"><label>course / materials url</label><input id="m-url" type="url" placeholder="https://..." /></div>
+        <div class="field"><label>notes</label><textarea id="m-notes" placeholder="exam date, resources, thoughts..."></textarea></div>
+        <div class="modal-actions">
+          <button class="btn-cancel" onclick="closeModal()">cancel</button>
+          <button class="btn-primary" onclick="addItem()">add</button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function renderProjectModal() {
+    return `<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+      <div class="modal">
+        <div class="modal-title">+ add project</div>
+        <div class="field"><label>project name</label><input id="p-name" type="text" placeholder="e.g. Real-time pipeline dashboard" /></div>
+        <div class="field"><label>description</label><textarea id="p-desc" placeholder="what you're building and why..."></textarea></div>
+        <div class="field-row">
+          <div class="field">
+            <label>priority</label>
+            <select id="p-priority"><option value="medium" selected>medium</option><option value="high">high</option><option value="low">low</option></select>
+          </div>
+          <div class="field">
+            <label>status</label>
+            <select id="p-status"><option value="idea" selected>idea</option><option value="active">in progress</option><option value="done">shipped</option></select>
+          </div>
+        </div>
+        <div class="field">
+          <label>target date</label>
+          <input id="p-date" type="date" />
+        </div>
+        <div class="field"><label>skills used (comma separated)</label><input id="p-skills" type="text" placeholder="e.g. Kafka, dbt, Spark — links to learning items" /></div>
+        <div class="field-row">
+          <div class="field"><label>live / demo url</label><input id="p-url" type="url" placeholder="https://..." /></div>
+          <div class="field"><label>repo url</label><input id="p-repo" type="url" placeholder="https://github.com/..." /></div>
+        </div>
+        <div class="field"><label>notes</label><textarea id="p-notes" placeholder="design decisions, stack choices, blockers..."></textarea></div>
+        <div class="modal-actions">
+          <button class="btn-cancel" onclick="closeModal()">cancel</button>
+          <button class="btn-primary" onclick="addProject()">add</button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  // ── actions ───────────────────────────────────────────────────────────────
+  window.setTab          = t  => { activeTab=t; selectedItem=null; render(); };
+  window.setLearnFilter  = (k,v) => { learnFilter[k]=v; render(); };
+  window.setProjFilter   = (k,v) => { projFilter[k]=v; render(); };
+  window.openModal       = t  => { showModal=t; render(); };
+  window.closeModal      = () => { showModal=null; render(); };
+  window.selectCard      = (type,id) => {
+    selectedItem = (selectedItem?.type===type && selectedItem?.id===id) ? null : { type, id };
+    render();
+  };
+  window.closeDetail     = () => { selectedItem=null; render(); };
+
+  window.moveItem = (id, status) => {
+    const it = items.find(i=>i.id===id); if (!it) return;
+    it.status=status;
+    if (status==='done')    it.progress=100;
+    if (status==='backlog') it.progress=0;
     save(); render();
+  };
+
+  window.moveProject = (id, status) => {
+    const p = projects.find(p=>p.id===id); if (!p) return;
+    p.status=status; save(); render();
   };
 
   window.deleteItem = id => {
     if (!confirm('Remove this item?')) return;
-    items=items.filter(i=>i.id!==id); selectedId=null; save(); render();
+    items=items.filter(i=>i.id!==id); selectedItem=null; save(); render();
+  };
+
+  window.deleteProject = id => {
+    if (!confirm('Remove this project?')) return;
+    projects=projects.filter(p=>p.id!==id); selectedItem=null; save(); render();
   };
 
   window.liveProgress = (id, val) => {
-    const item = items.find(i=>i.id===id);
-    if (!item) return;
-    item.progress=val;
+    const it = items.find(i=>i.id===id); if (!it) return;
+    it.progress=val;
     const el = document.getElementById('pct-out');
     if (el) el.textContent=val+'%';
     save();
   };
 
-  window.saveDetail = id => {
-    const item=items.find(i=>i.id===id);
-    if (!item) return;
-    const urlField   = document.getElementById('det-url');
-    const notesField = document.getElementById('det-notes');
-    if (urlField)   item.url   = urlField.value.trim();
-    if (notesField) item.notes = notesField.value.trim();
+  window.saveItemDetail = id => {
+    const it = items.find(i=>i.id===id); if (!it) return;
+    it.priority   = document.getElementById('det-priority')?.value || 'medium';
+    it.targetDate = document.getElementById('det-date')?.value || '';
+    it.url        = document.getElementById('det-url')?.value?.trim() || '';
+    it.notes      = document.getElementById('det-notes')?.value?.trim() || '';
     save();
     const btn = document.querySelector('.save-btn');
-    if (btn) { btn.textContent='saved ✓'; setTimeout(()=>{ btn.textContent='save changes'; },1500); }
+    if (btn) { btn.textContent='saved ✓'; setTimeout(()=>{ if(document.querySelector('.save-btn')) document.querySelector('.save-btn').textContent='save changes'; },1500); }
+    render();
+  };
+
+  window.saveProjectDetail = id => {
+    const p = projects.find(x=>x.id===id); if (!p) return;
+    p.priority    = document.getElementById('det-proj-priority')?.value || 'medium';
+    p.targetDate  = document.getElementById('det-proj-date')?.value || '';
+    p.description = document.getElementById('det-proj-desc')?.value?.trim() || '';
+    const skillsRaw = document.getElementById('det-proj-skills')?.value?.trim() || '';
+    p.skills      = skillsRaw ? skillsRaw.split(',').map(s=>s.trim()).filter(Boolean) : [];
+    p.url         = document.getElementById('det-proj-url')?.value?.trim() || '';
+    p.repoUrl     = document.getElementById('det-proj-repo')?.value?.trim() || '';
+    p.notes       = document.getElementById('det-proj-notes')?.value?.trim() || '';
+    save();
+    const btn = document.querySelector('.save-btn');
+    if (btn) { btn.textContent='saved ✓'; setTimeout(()=>{ if(document.querySelector('.save-btn')) document.querySelector('.save-btn').textContent='save changes'; },1500); }
+    render();
   };
 
   window.addItem = () => {
-    const name    = document.getElementById('m-name')?.value?.trim();
-    const provider= document.getElementById('m-provider')?.value?.trim();
-    const url     = document.getElementById('m-url')?.value?.trim();
-    const tagsRaw = document.getElementById('m-tags')?.value?.trim();
-    const cert    = document.getElementById('m-cert')?.value==='true';
-    const status  = document.getElementById('m-status')?.value;
-    const notes   = document.getElementById('m-notes')?.value?.trim();
+    const name     = document.getElementById('m-name')?.value?.trim();
     if (!name) { document.getElementById('m-name')?.focus(); return; }
-    const tags=tagsRaw?tagsRaw.split(',').map(t=>t.trim()).filter(Boolean):[];
-    items.push({id:nextId++,name,provider:provider||'',url:url||'',tags,cert,status,progress:status==='done'?100:0,notes:notes||''});
-    showModal=false; save(); render();
+    const provider = document.getElementById('m-provider')?.value?.trim() || '';
+    const priority = document.getElementById('m-priority')?.value || 'medium';
+    const cert     = document.getElementById('m-cert')?.value === 'true';
+    const status   = document.getElementById('m-status')?.value || 'backlog';
+    const date     = document.getElementById('m-date')?.value || '';
+    const tagsRaw  = document.getElementById('m-tags')?.value?.trim() || '';
+    const url      = document.getElementById('m-url')?.value?.trim() || '';
+    const notes    = document.getElementById('m-notes')?.value?.trim() || '';
+    const tags     = tagsRaw ? tagsRaw.split(',').map(t=>t.trim()).filter(Boolean) : [];
+    items.push({ id:nextItemId++, name, provider, priority, cert, status, targetDate:date, tags, url, progress:status==='done'?100:0, notes });
+    showModal=null; save(); render();
   };
 
-  render();
+  window.addProject = () => {
+    const name = document.getElementById('p-name')?.value?.trim();
+    if (!name) { document.getElementById('p-name')?.focus(); return; }
+    const priority    = document.getElementById('p-priority')?.value || 'medium';
+    const status      = document.getElementById('p-status')?.value || 'idea';
+    const date        = document.getElementById('p-date')?.value || '';
+    const desc        = document.getElementById('p-desc')?.value?.trim() || '';
+    const skillsRaw   = document.getElementById('p-skills')?.value?.trim() || '';
+    const url         = document.getElementById('p-url')?.value?.trim() || '';
+    const repoUrl     = document.getElementById('p-repo')?.value?.trim() || '';
+    const notes       = document.getElementById('p-notes')?.value?.trim() || '';
+    const skills      = skillsRaw ? skillsRaw.split(',').map(s=>s.trim()).filter(Boolean) : [];
+    projects.push({ id:nextProjId++, name, priority, status, targetDate:date, description:desc, skills, url, repoUrl, notes });
+    showModal=null; save(); render();
+  };
+
+  loadData();
 })();
 </script>
 </body>
